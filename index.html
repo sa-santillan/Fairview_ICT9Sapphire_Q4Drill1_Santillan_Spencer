@@ -8,14 +8,39 @@
 <body>
 
     <h1>Electricity Consumption Classifier</h1>
-
-    <p>Enter your electricity usage in kilowatt-hours (kWh) to determine your consumption category.</p>
-
-    <label for="kWhInput">kWh:</label>
-    <input type="number" id="kWhInput" placeholder="Input kilowatt per hour">
     
-    <button onclick="classifyConsumption()">Consumption Classification</button>
+    <p>Use this tool to classify your electricity usage based on your kWh consumption.</p>
 
+    <input type="number" id="kWhInput" placeholder="input kilowatt per hour ?">
+    
+    <button onclick="classifyUsage()">Consumption Classification</button>
 
+    <script>
+       
+        function classifyConsumption() {
+            var inputVal = document.getElementById("kWhInput").value;
+            var kWh = parseFloat(inputVal);
+            if (isNaN(kWh) || kWh < 0) {
+                // Requirement: JavaScript Outputs (window.alert) [cite: 27, 42]
+                alert("Please input a non-negative number.");
+            } 
+            else if (kWh >= 0 && kWh <= 100) {
+                alert("Lifeline Consumer: Discounted electricity rates");
+            } 
+            else if (kWh >= 101 && kWh <= 200) {
+                alert("Low Consumption: Normal residential rate");
+            } 
+            else if (kWh >= 201 && kWh <= 300) {
+                alert("Average Consumption: Typical electricity usage");
+            } 
+            else if (kWh >= 301 && kWh <= 500) {
+                alert("High Consumption: Higher electricity usage");
+            } 
+            else {
+                // Above 500 kWh 
+                alert("Very High Consumption: Heavy electricity users");
+            }
+        }
+    </script>
 </body>
 </html>
