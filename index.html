@@ -13,31 +13,38 @@
 
     <input type="number" id="kWhInput" placeholder="input kilowatt per hour ?">
     
-    <button onclick="classifyUsage()">Consumption Classification</button>
+    <button onclick="classifyUsage()">Consumption Classification</button>   
 
     <script>
-       
-        function classifyConsumption() {
+        /**
+         * Requirement: JavaScript Conditional Statements [cite: 25]
+         * Requirement: JavaScript Comments [cite: 26]
+         */
+        function classifyUsage() {
+            // Requirement: Variables and Data Types [cite: 24]
             var inputVal = document.getElementById("kWhInput").value;
             var kWh = parseFloat(inputVal);
+
+            // Classification Table Logic 
             if (isNaN(kWh) || kWh < 0) {
                 // Requirement: JavaScript Outputs (window.alert) [cite: 27, 42]
                 alert("Please input a non-negative number.");
             } 
-            else if (kWh >= 0 && kWh <= 100) {
+            else if (kWh <= 100) {
                 alert("Lifeline Consumer: Discounted electricity rates");
             } 
-            else if (kWh >= 101 && kWh <= 200) {
+            else if (kWh <= 200) {
                 alert("Low Consumption: Normal residential rate");
             } 
-            else if (kWh >= 201 && kWh <= 300) {
+            else if (kWh <= 300) {
+                // Requirement: Correct Message Output [cite: 43, 51]
                 alert("Average Consumption: Typical electricity usage");
             } 
-            else if (kWh >= 301 && kWh <= 500) {
+            else if (kWh <= 500) {
                 alert("High Consumption: Higher electricity usage");
             } 
             else {
-                // Above 500 kWh 
+                // Very High Consumption: Above 500 
                 alert("Very High Consumption: Heavy electricity users");
             }
         }
